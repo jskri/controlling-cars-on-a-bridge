@@ -76,7 +76,7 @@ Spec ==
   /\ Init
   /\ [][Next]_vars
 -----------------------------------------------------------------------------
-THEOREM InvTypeOK == Spec => []TypeOK
+THEOREM SpecTypeOK == Spec => []TypeOK
 <1>1. Init => TypeOK
   BY DEF Init, TypeOK
 <1>2. TypeOK /\ [Next]_vars => TypeOK'
@@ -84,7 +84,7 @@ THEOREM InvTypeOK == Spec => []TypeOK
 <1>3. QED
   BY <1>1, <1>2, PTL DEF Spec
 
-THEOREM InvOneWayBridge == Spec => []OneWayBridge
+THEOREM SpecOneWayBridge == Spec => []OneWayBridge
 <1>1. Init => OneWayBridge
   BY DEF Init, OneWayBridge
 <1>2. OneWayBridge /\ [Next]_vars => OneWayBridge'
@@ -93,25 +93,25 @@ THEOREM InvOneWayBridge == Spec => []OneWayBridge
   BY <1>1, <1>2, PTL DEF Spec
 -----------------------------------------------------------------------------
 n == a + b + c
-M == INSTANCE CarsOnBridge0
+M0 == INSTANCE CarsOnBridge0
 
 Correct == TypeOK /\ OneWayBridge
 
-THEOREM InvCorrect == Spec => []Correct
-BY InvTypeOK, InvOneWayBridge DEF Correct
+THEOREM SpecCorrect == Spec => []Correct
+BY SpecTypeOK, SpecOneWayBridge DEF Correct
 
-THEOREM Refinement == Spec => M!Spec
-<1>1. Init => M!Init
-  BY DEF Init, M!Init, n
-<1>2. Correct /\ [Next]_vars => [M!Next]_n
+THEOREM Refinement == Spec => M0!Spec
+<1>1. Init => M0!Init
+  BY DEF Init, M0!Init, n
+<1>2. Correct /\ [Next]_vars => [M0!Next]_n
   (* This proof could be compacted but is arguably clearer here. *)
   <2> SUFFICES ASSUME Correct, [Next]_vars
-               PROVE  [M!Next]_n OBVIOUS
+               PROVE  [M0!Next]_n OBVIOUS
   <2> USE DEF Correct, TypeOK
-  <2>1. ML_in => M!ML_in
-    BY DEF ML_in, M!Next, n, M!ML_in
-  <2>2. ML_out => M!ML_out
-    BY DEF ML_out, M!Next, n, M!ML_out
+  <2>1. ML_in => M0!ML_in
+    BY DEF ML_in, M0!Next, n, M0!ML_in
+  <2>2. ML_out => M0!ML_out
+    BY DEF ML_out, M0!Next, n, M0!ML_out
   <2>3. IL_in => UNCHANGED n
     BY DEF IL_in, n
   <2>4. IL_out => UNCHANGED n
@@ -119,7 +119,7 @@ THEOREM Refinement == Spec => M!Spec
   <2>5. UNCHANGED vars => UNCHANGED n
     BY DEF vars, n
   <2>6. QED
-    BY <2>1, <2>2, <2>3, <2>4, <2>5 DEF Next, M!Next
+    BY <2>1, <2>2, <2>3, <2>4, <2>5 DEF Next, M0!Next
 <1>3. QED
-  BY <1>1, <1>2, InvCorrect, PTL DEF Spec, M!Spec
+  BY <1>1, <1>2, SpecCorrect, PTL DEF Spec, M0!Spec
 =============================================================================

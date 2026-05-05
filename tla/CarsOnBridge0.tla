@@ -47,7 +47,7 @@ DeadlockFree ==
   \/ ENABLED ML_in
   \/ ENABLED ML_out
 -----------------------------------------------------------------------------
-THEOREM InvCorrect == Spec => []Correct
+THEOREM SpecCorrect == Spec => []Correct
 <1>1. Init => Correct
   BY AssumeD DEF Init, Correct
 <1>2. Correct /\ [Next]_n => Correct'
@@ -55,11 +55,11 @@ THEOREM InvCorrect == Spec => []Correct
 <1>3. QED
   BY <1>1, <1>2, PTL DEF Spec
 
-THEOREM InvDeadlockFree == Spec => []DeadlockFree
+THEOREM SpecDeadlockFree == Spec => []DeadlockFree
 <1>1. Init => DeadlockFree
   BY AssumeD, ExpandENABLED, AutoUSE DEF Init, DeadlockFree
 <1>2. Correct /\ DeadlockFree /\ [Next]_n => DeadlockFree'
   BY AssumeD, ExpandENABLED DEF Correct, DeadlockFree, Next, ML_in, ML_out
 <1>3. QED
-  BY InvCorrect, <1>1, <1>2, PTL DEF Spec
+  BY SpecCorrect, <1>1, <1>2, PTL DEF Spec
 =============================================================================

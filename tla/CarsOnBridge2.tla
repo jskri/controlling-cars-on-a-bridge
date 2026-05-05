@@ -147,7 +147,7 @@ Correct ==
   /\ MlTlPass
   /\ IlTlPass
 
-THEOREM InvCorrect == Spec => []Correct
+THEOREM SpecCorrect == Spec => []Correct
 <1>1. Init => Correct
   BY DEF Init, M1!Init, Correct,
     TypeOK, M1!TypeOK, MlTlSafe, IlTlSafe, M1!OneWayBridge,
@@ -183,5 +183,5 @@ THEOREM Refinement == Spec => M1!Spec
     ML_in, ML_out, IL_in, IL_out,
     ML_tl_green, IL_tl_green, Color
 <1>3. QED
-  BY <1>1, <1>2, InvCorrect, PTL DEF Spec, M1!Spec, M1!vars, m1_vars
+  BY <1>1, <1>2, SpecCorrect, PTL DEF Spec, M1!Spec, M1!vars, m1_vars
 =============================================================================
