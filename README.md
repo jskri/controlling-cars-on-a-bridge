@@ -5,20 +5,51 @@ island.
 
 This example is interesting because it solves the problem using a top-down
 approach, introducing a succession of increasingly refined models. Each refined
-model introduces new details, which keeps the modelling task manageable. All
+model introduces new details, which keeps the modeling task manageable. All
 invariants and refinements are formally proved.
 
-The [original models](https://www.event-b.org/A_ch2.pdf) use the Event-B
-formalism. We adapt them here to
-[TLA+](https://lamport.azurewebsites.net/tla/tla.html), whose syntax and
-semantics are very similar, and to [Isabelle](https://isabelle.in.tum.de/),
-which diverges more significantly.
+The [original
+models](https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf)
+use the Event-B formalism. We adapt them here to:
 
-For now, the TLA+ models go up to the second refinement, while the Isabelle
-models go up to the first.
+- [TLA+](https://lamport.azurewebsites.net/tla/tla.html), whose syntax and
+semantics are very similar
 
-The TLA+ models require the [TLA+ proof
-manager](https://github.com/tlaplus/tlapm) version 1.5.0.
+- [Coq / Rocq](https://rocq-prover.org/), which diverges more significantly
 
-The Isabelle models have been tested with
-[Isabelle2025-2/HOL](https://isabelle.in.tum.de/installation.html).
+- [Isabelle](https://isabelle.in.tum.de/) (idem)
+
+For now, the TLA+ and Rocq models go up to the second refinement, while the
+Isabelle models go up to the first.
+
+
+# Requirements
+
+The proofs have been successfully verified with:
+
+## TLA+
+
+- [TLA+ proof manager
+  1.5.0](https://github.com/tlaplus/tlapm/releases/tag/202210041448)
+
+- editing (optional): The [TLA+ Toolbox
+  1.7.4](https://github.com/tlaplus/tlaplus/releases/tag/v1.7.4)
+
+Note: An alternative editor I have not tested is
+[VsCode](https://code.visualstudio.com/) with the [TLA+ (Temporal Logic of
+Actions)](https://marketplace.visualstudio.com/items?itemName=tlaplus.vscode-ide)
+extension.
+
+## Rocq
+
+- [Rocq](https://rocq-prover.org/releases) 9.0.1
+
+- [Coq-hammer](https://coqhammer.github.io/) 1.3.2+9.0 (for proof automation)
+
+- editing (optional): [VsCode](https://code.visualstudio.com/) with the
+  [VsRocq](https://marketplace.visualstudio.com/items?itemName=rocq-prover.vsrocq)
+  2.4.3 extension.
+
+## Isabelle
+
+- [Isabelle](https://isabelle.in.tum.de/installation.html) 2025-2/HOL
