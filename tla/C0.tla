@@ -1,11 +1,11 @@
---------------------------- MODULE CarsOnBridge0 ---------------------------
+-------------------------------- MODULE C0 --------------------------------
 (***************************************************************************)
 (* First model of course 02: Controlling cars on a bridge                  *)
 (*                                                                         *)
 (* This model is only concerned with limiting the number of cars on the    *)
 (* island and brige.                                                       *)
 (*                                                                         *)
-(* See https://www.event-b.org/A_ch2.pdf                                   *)
+(* See https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf *)
 (*                                                                         *)
 (*                      ML_out                                             *)
 (*  -----------------   <-----   ----------                                *)
@@ -15,22 +15,22 @@
 (*                                                                         *)
 (***************************************************************************)
 
-EXTENDS CarsOnBridgeConstants, TLAPS
-VARIABLES n \* Number of cars on island + brige.
+EXTENDS Common, TLAPS
+VARIABLES n (* Number of cars on island + brige. *)
 
 Init ==
   n = 0
 
 Correct ==
-  /\ n \in Nat \* type ok
-  /\ n <= d  \* at most d cars
+  /\ n \in Nat (* type ok *)
+  /\ n <= d  (* at most d cars *)
 
-\* A car enters the mainland.
+(* A car enters the mainland. *)
 ML_in ==
   /\ n > 0
   /\ n' = n - 1
 
-\* A car leaves the mainland.
+(* A car leaves the mainland. *)
 ML_out ==
   /\ n < d
   /\ n' = n + 1
@@ -46,6 +46,7 @@ Spec ==
 DeadlockFree ==
   \/ ENABLED ML_in
   \/ ENABLED ML_out
+
 -----------------------------------------------------------------------------
 THEOREM SpecCorrect == Spec => []Correct
 <1>1. Init => Correct
