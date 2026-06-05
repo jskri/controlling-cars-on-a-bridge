@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1780672437098" org.eventb.texttools.text_representation="context C3Ctx&#10;&#10;sets SENSOR&#10;&#10;constants&#10;  on off // Sensor values.&#10;  s2n    // Sensor to natural function.&#10;&#10;axioms&#10;  @a1 SENSOR = {on, off}&#10;  @a2 on ≠ off&#10;  @a3 s2n ∈ SENSOR → {0, 1}&#10;  @a4 s2n(off) = 0&#10;  @a5 s2n(on) = 1&#10;&#10;end" version="3">
+    <org.eventb.core.carrierSet name="_OBzBQGDiEfGaLZIqB5OAsw" org.eventb.core.generated="false" org.eventb.core.identifier="SENSOR"/>
+    <org.eventb.core.constant name="_OBzBQWDiEfGaLZIqB5OAsw" org.eventb.core.generated="false" org.eventb.core.identifier="on"/>
+    <org.eventb.core.constant name="_OBzoUGDiEfGaLZIqB5OAsw" org.eventb.core.comment="Sensor values." org.eventb.core.generated="false" org.eventb.core.identifier="off"/>
+    <org.eventb.core.constant name="_OBzoUWDiEfGaLZIqB5OAsw" org.eventb.core.comment="Sensor to natural function." org.eventb.core.generated="false" org.eventb.core.identifier="s2n"/>
+    <org.eventb.core.axiom name="_LEF8MGDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a1" org.eventb.core.predicate="SENSOR = {on, off}"/>
+    <org.eventb.core.axiom name="_LEGjQGDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a2" org.eventb.core.predicate="on ≠ off"/>
+    <org.eventb.core.axiom name="_LEGjQWDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a3" org.eventb.core.predicate="s2n ∈ SENSOR → {0, 1}"/>
+    <org.eventb.core.axiom name="_LEHKUGDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a4" org.eventb.core.predicate="s2n(off) = 0"/>
+    <org.eventb.core.axiom name="_LEHKUWDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a5" org.eventb.core.predicate="s2n(on) = 1"/>
+</org.eventb.core.contextFile>

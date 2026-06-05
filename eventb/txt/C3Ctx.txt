@@ -1,0 +1,16 @@
+context C3Ctx
+
+sets SENSOR
+
+constants
+  on off // Sensor values.
+  s2n    // Sensor to natural function.
+
+axioms
+  @a1 SENSOR = {on, off}
+  @a2 on ≠ off
+  @a3 s2n ∈ SENSOR → {0, 1}
+  @a4 s2n(off) = 0
+  @a5 s2n(on) = 1
+
+end

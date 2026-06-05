@@ -1,0 +1,17 @@
+context C2Ctx
+
+extends C0Ctx
+
+sets COLOR
+
+constants
+  green red // Colors.
+  b2n       // Boolean to natural function.
+
+axioms
+  @a1 COLOR = {green, red}
+  @a2 green ≠ red
+  @a3 b2n ∈ BOOL → {0, 1}
+  @a4 b2n(FALSE) = 0
+  @a5 b2n(TRUE) = 1
+end

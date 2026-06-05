@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scAxiom name="'" org.eventb.core.label="a1" org.eventb.core.predicate="SENSOR={on,off}" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEF8MGDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="(" org.eventb.core.label="a2" org.eventb.core.predicate="on≠off" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEGjQGDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name=")" org.eventb.core.label="a3" org.eventb.core.predicate="s2n∈SENSOR → {0,1}" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEGjQWDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="*" org.eventb.core.label="a4" org.eventb.core.predicate="s2n(off)=0" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUGDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="+" org.eventb.core.label="a5" org.eventb.core.predicate="s2n(on)=1" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUWDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="off" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.constant#_OBzoUGDiEfGaLZIqB5OAsw" org.eventb.core.type="SENSOR"/>
+    <org.eventb.core.scConstant name="on" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.constant#_OBzBQWDiEfGaLZIqB5OAsw" org.eventb.core.type="SENSOR"/>
+    <org.eventb.core.scCarrierSet name="SENSOR" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.carrierSet#_OBzBQGDiEfGaLZIqB5OAsw" org.eventb.core.type="ℙ(SENSOR)"/>
+    <org.eventb.core.scConstant name="s2n" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.constant#_OBzoUWDiEfGaLZIqB5OAsw" org.eventb.core.type="ℙ(SENSOR×ℤ)"/>
+</org.eventb.core.scContextFile>

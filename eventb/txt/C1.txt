@@ -1,0 +1,107 @@
+machine C1
+/***************************************************************************/
+/* Second model of course 02: Controlling cars on a bridge                 */
+/*                                                                         */
+/* Introducing the bridge.                                                 */
+/*                                                                         */
+/* See https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf */
+/*                                                                         */
+/*               IL_in                       ML_out                        */
+/*   ---------   <-----   ----------------   <-----   ----------           */
+/*  | Island  |          | One Way Bridge |          | MainLand |          */
+/*   ---------   ----->   ----------------   ----->   ----------           */
+/*               IL_out                       ML_in                        */
+/*                                                                         */
+/***************************************************************************/
+
+refines C0
+
+sees C0Ctx
+
+variables
+  a // Number of cars on the bridge going to the island.
+  b // Number of cars on the island.
+  c // Number of cars on the bridge going to the mainland.
+
+invariants
+  @i0 a ∈ ℕ
+  @i1 b ∈ ℕ
+  @i2 c ∈ ℕ
+  @i3 n = a+b+c
+  @i4 a = 0 ∨ c = 0 // One-way bridge.
+  // From C0:
+  //   a+b+c ≤ d
+  //   a+b+c > 0 ∨ a+b+c < d
+  theorem @dlf
+      (c > 0)
+    ∨ (a+b+c < d ∧ c = 0)
+    ∨ (a > 0)
+    ∨ (a = 0 ∧ b > 0)
+    // Disjunction of all event guards.
+    // `(n > 0 ∨ n < d) ⇒ ` is removed because it is already proved in
+    // the first model (C0).
+    // Informal proof:
+    // - We know the bridge is one-way (a = 0 ∨ c = 0).
+    // - Suppose no car on the bridge to the island (a = 0).
+    //   - Suppose cars on the island (b > 0) -> IL_out possible.
+    //   - Suppose no car on the island (b = 0).
+    //     - Suppose cars on bridge to the mainland (c > 0) -> ML_in possible.
+    //     - Suppose no car on bridge to the mainland (c = 0) -> ML_out possible.
+    // - Suppose no car on the bridge to the mainland (c = 0).
+    //   - Suppose cars on bridge to island (a > 0) -> IL_in possible
+    //   - Suppose no car on bridge to island (a = 0).
+    //     - Suppose cars on island (b > 0) -> IL_out possible
+    //     - Suppose no car on island (b = 0) -> ML_out possible
+
+variant
+  2∗a + b
+
+events
+  event INITIALISATION
+  then
+    @a0 a ≔ 0
+    @a1 b ≔ 0
+    @a2 c ≔ 0
+  end
+
+  event ML_in // One car on the bridge enters the mainland.
+  refines ML_in
+  where
+    @g0 c > 0
+  then
+    @a0 c ≔ c−1
+  end
+
+  event ML_out // One car from the mainland enters the bridge.
+  refines ML_out
+  where
+    @g0 a+b+c < d // Max cars not reached on island + bridge.
+    @g1 c = 0     // No car on the bridge going to the mainland.
+  then
+    @a0 a ≔ a+1
+  end
+
+  convergent event IL_in // One car on the bridge enters the island.
+  // No car count check here because it is done when leaving the mainland.
+  // variant' = 2(a-1) + (b+1)
+  //          = (2a + -2) + (b+1)
+  //          = 2a + b - 1
+  //          < 2a + b
+  where
+    @g0 a > 0 // At least one incoming car on the bridge.
+  then
+    @a0 a ≔ a−1
+    @a1 b ≔ b+1
+  end
+
+  convergent event IL_out // One car on the island enters the bridge.
+  // variant' = 2a + b-1
+  //          < 2a + b
+  where
+    @g0 a = 0 // No incoming car on the bridge.
+    @g1 b > 0 // Some cars on the island.
+  then
+    @a0 b ≔ b−1
+    @a1 c ≔ c+1
+  end
+end

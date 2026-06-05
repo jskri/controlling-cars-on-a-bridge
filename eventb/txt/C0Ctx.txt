@@ -1,0 +1,9 @@
+context C0Ctx
+
+constants d
+
+axioms
+  @a1 d ∈ ℕ
+  @a2 d > 0
+
+end

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="4">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poIdentifier name="d" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="e" org.eventb.core.predicate="d∈ℕ" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0GDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poPredicate name="f" org.eventb.core.predicate="d&gt;0" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0WDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poIdentifier name="COLOR" org.eventb.core.type="ℙ(COLOR)"/>
+        <org.eventb.core.poIdentifier name="red" org.eventb.core.type="COLOR"/>
+        <org.eventb.core.poIdentifier name="green" org.eventb.core.type="COLOR"/>
+        <org.eventb.core.poIdentifier name="b2n" org.eventb.core.type="ℙ(BOOL×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="a4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="FALSE∈dom(b2n)∧b2n∈BOOL ⇸ ℤ" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wImDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wImDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct{"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="a5/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="TRUE∈dom(b2n)∧b2n∈BOOL ⇸ ℤ" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wI2DxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wI2DxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct\|"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYPC0Ct{" org.eventb.core.parentSet="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="COLOR={green,red}" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0JEGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="green≠red" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wIGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="b2n∈BOOL → {0,1}" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wIWDxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPC0Ct|" org.eventb.core.parentSet="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct{" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="b2n(FALSE)=0" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wImDxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Car/C2Ctx.bpo|org.eventb.core.poFile#C2Ctx|org.eventb.core.poPredicateSet#HYPC0Ct\|" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="b2n(TRUE)=1" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wI2DxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

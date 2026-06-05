@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1780672572443" org.eventb.texttools.text_representation="context C2Ctx&#10;&#10;extends C0Ctx&#10;&#10;sets COLOR&#10;&#10;constants&#10;  green red // Colors.&#10;  b2n       // Boolean to natural function.&#10;&#10;axioms&#10;  @a1 COLOR = {green, red}&#10;  @a2 green ≠ red&#10;  @a3 b2n ∈ BOOL → {0, 1}&#10;  @a4 b2n(FALSE) = 0&#10;  @a5 b2n(TRUE) = 1&#10;end&#10;" version="3">
+    <org.eventb.core.extendsContext name="_8HwR0GDGEfGsLtVqRrNfEA" org.eventb.core.target="C0Ctx"/>
+    <org.eventb.core.carrierSet name="_6GBDkGDGEfGsLtVqRrNfEA" org.eventb.core.generated="false" org.eventb.core.identifier="COLOR"/>
+    <org.eventb.core.constant name="_6GBqoGDGEfGsLtVqRrNfEA" org.eventb.core.generated="false" org.eventb.core.identifier="green"/>
+    <org.eventb.core.constant name="_6GBqoWDGEfGsLtVqRrNfEA" org.eventb.core.comment="Colors." org.eventb.core.generated="false" org.eventb.core.identifier="red"/>
+    <org.eventb.core.constant name="_yqPcQGDLEfGzcLFmylS19g" org.eventb.core.comment="Boolean to natural function." org.eventb.core.generated="false" org.eventb.core.identifier="b2n"/>
+    <org.eventb.core.axiom name="_fO0JEGDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a1" org.eventb.core.predicate="COLOR = {green, red}"/>
+    <org.eventb.core.axiom name="_fO0wIGDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a2" org.eventb.core.predicate="green ≠ red"/>
+    <org.eventb.core.axiom name="_fO0wIWDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a3" org.eventb.core.predicate="b2n ∈ BOOL → {0, 1}"/>
+    <org.eventb.core.axiom name="_fO0wImDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a4" org.eventb.core.predicate="b2n(FALSE) = 0"/>
+    <org.eventb.core.axiom name="_fO0wI2DxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a5" org.eventb.core.predicate="b2n(TRUE) = 1"/>
+</org.eventb.core.contextFile>

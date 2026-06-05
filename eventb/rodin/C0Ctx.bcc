@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scAxiom name="'" org.eventb.core.label="a1" org.eventb.core.predicate="d∈ℕ" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0GDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="(" org.eventb.core.label="a2" org.eventb.core.predicate="d&gt;0" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0WDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="d" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.constant#_7DFhUGAtEfGStvY_HyjkDQ" org.eventb.core.type="ℤ"/>
+</org.eventb.core.scContextFile>

@@ -1,0 +1,47 @@
+machine C0
+/***************************************************************************/
+/* First model of course 02: Controlling cars on a bridge                  */
+/*                                                                         */
+/* This model is only concerned with limiting the number of cars on the    */
+/* island and brige.                                                       */
+/*                                                                         */
+/* See https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf */
+/*                                                                         */
+/*                      ML_out                                             */
+/*  -----------------   <-----   ----------                                */
+/* | Island + Bridge |          | MainLand |                               */
+/*  -----------------   ----->   ----------                                */
+/*                      ML_in                                              */
+/*                                                                         */
+/***************************************************************************/
+
+sees C0Ctx
+
+variables
+  n // Number of cars on island + brige.
+
+invariants
+  @i0 n ∈ ℕ
+  @i1 n ≤ d // At most d cars.
+  @dlf n > 0 ∨ n < d // Deadlock-free.
+
+events
+  event INITIALISATION
+  then
+    @a0 n ≔ 0
+  end
+
+  event ML_in // A car enters the mainland.
+  where
+    @g0 n > 0
+  then
+    @a0 n ≔ n − 1
+  end
+
+  event ML_out // A car leaves the mainland.
+  where
+    @g0 n < d
+  then
+    @a0 n ≔ n + 1
+  end
+end

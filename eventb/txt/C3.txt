@@ -1,0 +1,321 @@
+machine C3
+/******************************************************************************/
+/* Add a separation between the environment and the controller.               */
+/*                                                                            */
+/*            il_tl             ml_tl                                         */
+/*            <- IL_in          <- ML_out                                     */
+/*    --------                    ----------                                  */
+/*   | Island |  One-way bridge  | Mainland |                                 */
+/*    --------                    ----------                                  */
+/*            -> IL_out         -> ML_in                                      */
+/* ========================================================================== */
+/*       b          <-a, c->                                                  */
+/*              |                     |                                       */
+/*              |---------------------|                                       */
+/*              |IL_IN sensor         |ML_OUT sensor                          */
+/*              |                     |                                       */
+/*       Island |      Bridge         | Mainland                              */
+/*              |                     |                                       */
+/* IL_OUT sensor|         ML_IN sensor|                                       */
+/*              |---------------------|                                       */
+/*              |                     |                                       */
+/* ========================================================================== */
+/*  il_out_10   --------------------                                          */
+/*   --------->|     CONTROLLER     |                                         */
+/*  |il_in_10  |                    |il_tl                                    */
+/*  |  ------->|                    |--------                                 */
+/*  | |ml_in_10|                    |        |                                */
+/*  | |  ----->|       a b c        |-----   |                                */
+/*  | | |      |                    |     |  |                                */
+/*  | | |  --->|  ml_pass il_pass   |     |  |                                */
+/*  | | | |     --------------------      |  |                                */
+/*  | | | |ml_out_10               ml_tl  |  |                                */
+/*  | | | |     --------------------      |  |                                */
+/*  | | |  ----|      ENVIRONMENT   |     |  |                                */
+/*  | | |      |                    |     |  |                                */
+/*  | |  ------|        A B C       |<----   |                                */
+/*  | |        |                    |        |                                */
+/*  |  --------| ML_OUT_SR ML_IN_SR |<-------                                 */
+/*  |          |                    |                                         */
+/*  -----------| IL_OUT_SR IL_IN_SR |                                         */
+/*              --------------------                                          */
+/******************************************************************************/
+
+refines C2
+
+sees C3Ctx
+
+variables
+  a         // Number of cars on the bridge and going to the island.
+  b         // Number of cars on the island.
+  c         // Number of cars on the bridge and going to the mainland.
+  il_tl     // Island's traffic light.
+  ml_tl     // Mainland's traffic light
+  ml_pass   // True iff at least one car has passed since ml tl is green.
+  il_pass   // True iff at least one car has passed since il tl is green.
+  ml_in_10  // True iff mainland in sensor goes from "on" to "off".
+  ml_out_10 // True iff mainland out sensor goes from "on" to "off".
+  il_in_10  // True iff island in sensor goes from "on" to "off".
+  il_out_10 // True iff island out sensor goes from "on" to "off"
+            // The previous variables are the input channel variables, i.e.
+            // from environment to controller.
+  A         // Physical number of cars on bridge towards island
+  B         // Physical number of cars on island
+  C         // Physical number of cars on bridge towards mainland
+  ML_IN_SR  // Physical mainland in sensor.
+  ML_OUT_SR // Physical mainland out sensor.
+  IL_IN_SR  // Physical island in sensor.
+  IL_OUT_SR // Physical island out sensor.
+            // The previous variables are physical variables, i.e.
+            // describing the environment.
+
+invariants
+  @i0  ML_OUT_SR ∈ SENSOR
+  @i1  ML_IN_SR  ∈ SENSOR
+  @i2  IL_OUT_SR ∈ SENSOR
+  @i3  IL_IN_SR  ∈ SENSOR
+  @i4  A         ∈ ℕ
+  @i5  B         ∈ ℕ
+  @i6  C         ∈ ℕ
+  @i7  ml_out_10 ∈ BOOL
+  @i8  ml_in_10  ∈ BOOL
+  @i9 il_out_10 ∈ BOOL
+  @i10 il_in_10  ∈ BOOL
+  @i11 IL_IN_SR  = on ⇒ A > 0
+  @i12 IL_OUT_SR = on ⇒ B > 0
+  @i13 ML_IN_SR  = on ⇒ C > 0
+  @i14 ml_out_10 = TRUE ⇒ ml_tl = green
+  @i15 il_out_10 = TRUE ⇒ il_tl = green
+  @i16 IL_IN_SR  = on ⇒ il_in_10  = FALSE
+  @i17 IL_OUT_SR = on ⇒ il_out_10 = FALSE
+  @i18 ML_IN_SR  = on ⇒ ml_in_10  = FALSE
+  @i19 ML_OUT_SR = on ⇒ ml_out_10 = FALSE
+  @i20 il_in_10  = TRUE  ∧ ml_out_10 = TRUE  ⇒ A = a
+  @i21 il_in_10  = FALSE ∧ ml_out_10 = TRUE  ⇒ A = a + 1
+  @i22 il_in_10  = TRUE  ∧ ml_out_10 = FALSE ⇒ A = a − 1
+  @i23 il_in_10  = FALSE ∧ ml_out_10 = FALSE ⇒ A = a
+  @i24 il_in_10  = TRUE  ∧ il_out_10 = TRUE  ⇒ B = b
+  @i25 il_in_10  = TRUE  ∧ il_out_10 = FALSE ⇒ B = b + 1
+  @i26 il_in_10  = FALSE ∧ il_out_10 = TRUE  ⇒ B = b − 1
+  @i27 il_in_10  = FALSE ∧ il_out_10 = FALSE ⇒ B = b
+  @i28 il_out_10 = TRUE  ∧ ml_in_10  = TRUE  ⇒ C = c
+  @i29 il_out_10 = TRUE  ∧ ml_in_10  = FALSE ⇒ C = c + 1
+  @i30 il_out_10 = FALSE ∧ ml_in_10  = TRUE  ⇒ C = c − 1
+  @i31 il_out_10 = FALSE ∧ ml_in_10  = FALSE ⇒ C = c
+  @i32 A = 0 ∨ C = 0
+  @i33 A+B+C ≤ d
+  theorem @dlf
+      (ml_out_10 = TRUE ∧ a+b+1 ≠ d)
+    ∨ (ml_out_10 = TRUE ∧ a+b+1 = d)
+    ∨ (il_out_10 = TRUE ∧ b ≠ 1)
+    ∨ (il_out_10 = TRUE ∧ b = 1)
+    ∨ (ml_in_10 = TRUE ∧ c > 0)
+    ∨ (il_in_10 = TRUE ∧ a > 0)
+    ∨ (ml_tl = red ∧ a+b < d ∧ c = 0 ∧ il_pass = TRUE ∧ il_out_10 = FALSE)
+    ∨ (il_tl = red ∧ 0 < b ∧ a = 0 ∧ ml_pass = TRUE ∧ ml_out_10 = FALSE)
+    ∨ (ML_OUT_SR = off ∧ ml_out_10 = FALSE)
+    ∨ (ML_IN_SR = off ∧ ml_in_10 = FALSE ∧ C > 0)
+    ∨ (IL_IN_SR = off ∧ il_in_10 = FALSE ∧ A > 0)
+    ∨ (IL_OUT_SR = off ∧ il_out_10 = FALSE ∧ B > 0)
+    ∨ (ML_OUT_SR = on ∧ ml_tl = green ∧ C = 0 ∧ A+B+C < d)
+    ∨ ML_IN_SR = on
+    ∨ IL_IN_SR = on
+    ∨ (IL_OUT_SR = on ∧ il_tl = green ∧ A = 0)
+
+variant
+  12 − (s2n(ML_OUT_SR) + s2n(ML_IN_SR) + s2n(IL_OUT_SR) + s2n(IL_IN_SR) +
+        2 ∗ (b2n(ml_out_10) + b2n(ml_in_10) + b2n(il_out_10) + b2n(il_in_10)))
+
+events
+  event INITIALISATION
+  extends INITIALISATION
+  then
+    @a7 ml_in_10   ≔ FALSE
+    @a8 ml_out_10  ≔ FALSE
+    @a9 il_in_10  ≔ FALSE
+    @a10 il_out_10 ≔ FALSE
+    @a11 A ≔ 0             // env
+    @a12 B ≔ 0             // env
+    @a13 C ≔ 0             // env
+    @a14 ML_IN_SR  ≔ off   // env
+    @a15 ML_OUT_SR ≔ off   // env
+    @a16 IL_IN_SR  ≔ off   // env
+    @a17 IL_OUT_SR ≔ off   // env
+  end
+
+  event ML_out_1
+  refines ML_out_1
+  where
+    @g0 ml_out_10 = TRUE
+    @g1 a+b+1 ≠ d
+  then
+    @a0 a ≔ a+1
+    @a1 ml_pass ≔ TRUE
+    @a2 ml_out_10 ≔ FALSE
+  end
+
+  event ML_out_2
+  refines ML_out_2
+  where
+    @g0 ml_out_10 = TRUE
+    @g1 a+b+1 = d
+  then
+    @a0 a ≔ a+1
+    @a1 ml_tl ≔ red
+    @a2 ml_pass ≔ TRUE
+    @a3 ml_out_10 ≔ FALSE
+  end
+
+  event IL_out_1
+  refines IL_out_1
+  where
+    @g0 il_out_10 = TRUE
+    @g1 b ≠ 1
+  then
+    @a0 b ≔ b−1
+    @a1 c ≔ c+1
+    @a2 il_pass ≔ TRUE
+    @a3 il_out_10 ≔ FALSE
+  end
+
+  event IL_out_2
+  refines IL_out_2
+  where
+    @g0 il_out_10 = TRUE
+    @g1 b = 1
+  then
+    @a0 b ≔ b−1
+    @a1 c ≔ c+1
+    @a2 il_tl ≔ red
+    @a3 il_pass ≔ TRUE
+    @a4 il_out_10 ≔ FALSE
+  end
+
+  event ML_in
+  refines ML_in
+  where
+    @g0 ml_in_10 = TRUE
+    @g1 c > 0
+  then
+    @a0 c ≔ c−1
+    @a1 ml_in_10 ≔ FALSE
+  end
+
+  event IL_in
+  refines IL_in
+  where
+    @g0 il_in_10 = TRUE
+    @g1 a > 0
+  then
+    @a0 a ≔ a−1
+    @a1 b ≔ b+1
+    @a2 il_in_10 ≔ FALSE
+  end
+
+  event ML_tl_green
+  refines ML_tl_green
+  where
+    @g0 ml_tl = red
+    @g1 a+b < d
+    @g2 c = 0
+    @g3 il_pass = TRUE
+    @g4 il_out_10 = FALSE
+  then
+    @a0 ml_tl ≔ green
+    @a1 il_tl ≔ red
+    @a2 ml_pass ≔ FALSE
+  end
+
+  event IL_tl_green
+  refines IL_tl_green
+  where
+    @g0 il_tl = red
+    @g1 0 < b
+    @g2 a = 0
+    @g3 ml_pass = TRUE
+    @g4 ml_out_10 = FALSE
+  then
+    @a0 il_tl ≔ green
+    @a1 ml_tl ≔ red
+    @a2 il_pass ≔ FALSE
+  end
+
+  event ML_out_arr // A car arrives on the ML_out sensor.
+  where
+    @g0 ML_OUT_SR = off
+    @g1 ml_out_10 = FALSE
+  then
+    @a0 ML_OUT_SR ≔ on
+  end
+
+  event ML_in_arr // A car arrives on the ML_in sensor.
+  where
+    @g0 ML_IN_SR = off
+    @g1 ml_in_10 = FALSE
+    @g2 C > 0
+  then
+    @a0 ML_IN_SR ≔ on
+  end
+
+  event IL_in_arr // A car arrives on the IL_in sensor.
+  where
+    @g0 IL_IN_SR = off
+    @g1 il_in_10 = FALSE
+    @g2 A > 0
+  then
+    @a0 IL_IN_SR ≔ on
+  end
+
+  convergent event IL_out_arr // A car arrives on the IL_out sensor.
+  where
+    @g0 IL_OUT_SR = off
+    @g1 il_out_10 = FALSE
+    @g2 B > 0
+  then
+    @a0 IL_OUT_SR ≔ on
+  end
+
+  convergent event ML_out_dep // A car leaves the ML_out sensor.
+  where
+    @g0 ML_OUT_SR = on
+    @g1 ml_tl = green
+    @g2 C = 0
+    @g3 A+B+C < d
+  then
+    @a0 ML_OUT_SR ≔ off
+    @a1 ml_out_10 ≔ TRUE
+    @a2 A ≔ A+1
+  end
+
+  convergent event ML_in_dep // A car leaves the ML_in sensor.
+  where
+    @g0 ML_IN_SR = on
+  then
+    @a0 ML_IN_SR ≔ off
+    @a1 ml_in_10 ≔ TRUE
+    @a2 C ≔ C−1
+  end
+
+  event IL_in_dep // A car leaves the IL_in sensor.
+  where
+    @g0 IL_IN_SR = on
+  then
+    @a0 IL_IN_SR ≔ off
+    @a1 il_in_10 ≔ TRUE
+    @a2 A ≔ A−1
+    @a3 B ≔ B+1
+  end
+
+  convergent event IL_out_dep // A car leaves the IL_out sensor.
+  where
+    @g0 IL_OUT_SR = on
+    @g1 il_tl = green
+    @g2 A = 0
+  then
+    @a0 IL_OUT_SR ≔ off
+    @a1 il_out_10 ≔ TRUE
+    @a2 B ≔ B−1
+    @a3 C ≔ C+1
+  end
+end
+

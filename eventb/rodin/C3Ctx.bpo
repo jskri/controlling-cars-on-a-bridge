@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="SENSOR" org.eventb.core.type="ℙ(SENSOR)"/>
+        <org.eventb.core.poIdentifier name="off" org.eventb.core.type="SENSOR"/>
+        <org.eventb.core.poIdentifier name="on" org.eventb.core.type="SENSOR"/>
+        <org.eventb.core.poIdentifier name="s2n" org.eventb.core.type="ℙ(SENSOR×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="a4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP)"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="off∈dom(s2n)∧s2n∈SENSOR ⇸ ℤ" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP)"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="a5/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP*"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="on∈dom(s2n)∧s2n∈SENSOR ⇸ ℤ" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUWDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUWDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP*"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYP)" org.eventb.core.parentSet="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="SENSOR={on,off}" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEF8MGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="on≠off" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEGjQGDxEfGEWvuFI08lww"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="s2n∈SENSOR → {0,1}" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEGjQWDxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP*" org.eventb.core.parentSet="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP)" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="s2n(off)=0" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUGDxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Car/C3Ctx.bpo|org.eventb.core.poFile#C3Ctx|org.eventb.core.poPredicateSet#HYP*" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="s2n(on)=1" org.eventb.core.source="/Car/C3Ctx.buc|org.eventb.core.contextFile#C3Ctx|org.eventb.core.axiom#_LEHKUWDxEfGEWvuFI08lww"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

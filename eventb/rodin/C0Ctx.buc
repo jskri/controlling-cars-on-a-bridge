@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1780672598121" org.eventb.texttools.text_representation="context C0Ctx&#10;&#10;constants d&#10;&#10;axioms&#10;  @a1 d ∈ ℕ&#10;  @a2 d &gt; 0&#10;&#10;end" version="3">
+    <org.eventb.core.constant name="_7DFhUGAtEfGStvY_HyjkDQ" org.eventb.core.generated="false" org.eventb.core.identifier="d"/>
+    <org.eventb.core.axiom name="_jDrh0GDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a1" org.eventb.core.predicate="d ∈ ℕ"/>
+    <org.eventb.core.axiom name="_jDrh0WDxEfGEWvuFI08lww" org.eventb.core.generated="false" org.eventb.core.label="a2" org.eventb.core.predicate="d &gt; 0"/>
+</org.eventb.core.contextFile>

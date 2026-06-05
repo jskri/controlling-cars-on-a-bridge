@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scExtendsContext name="'" org.eventb.core.scTarget="/Car/C0Ctx.bcc|org.eventb.core.scContextFile#C0Ctx" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.extendsContext#_8HwR0GDGEfGsLtVqRrNfEA"/>
+    <org.eventb.core.scInternalContext name="C0Ctx">
+        <org.eventb.core.scAxiom name="'" org.eventb.core.label="a1" org.eventb.core.predicate="d∈ℕ" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0GDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scAxiom name="(" org.eventb.core.label="a2" org.eventb.core.predicate="d&gt;0" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.axiom#_jDrh0WDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scConstant name="d" org.eventb.core.source="/Car/C0Ctx.buc|org.eventb.core.contextFile#C0Ctx|org.eventb.core.constant#_7DFhUGAtEfGStvY_HyjkDQ" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.scInternalContext>
+    <org.eventb.core.scAxiom name="C0Cty" org.eventb.core.label="a1" org.eventb.core.predicate="COLOR={green,red}" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0JEGDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="C0Ctz" org.eventb.core.label="a2" org.eventb.core.predicate="green≠red" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wIGDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="C0Ct{" org.eventb.core.label="a3" org.eventb.core.predicate="b2n∈BOOL → {0,1}" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wIWDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="C0Ct|" org.eventb.core.label="a4" org.eventb.core.predicate="b2n(FALSE)=0" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wImDxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="C0Ct}" org.eventb.core.label="a5" org.eventb.core.predicate="b2n(TRUE)=1" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.axiom#_fO0wI2DxEfGEWvuFI08lww" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="red" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.constant#_6GBqoWDGEfGsLtVqRrNfEA" org.eventb.core.type="COLOR"/>
+    <org.eventb.core.scConstant name="green" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.constant#_6GBqoGDGEfGsLtVqRrNfEA" org.eventb.core.type="COLOR"/>
+    <org.eventb.core.scCarrierSet name="COLOR" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.carrierSet#_6GBDkGDGEfGsLtVqRrNfEA" org.eventb.core.type="ℙ(COLOR)"/>
+    <org.eventb.core.scConstant name="b2n" org.eventb.core.source="/Car/C2Ctx.buc|org.eventb.core.contextFile#C2Ctx|org.eventb.core.constant#_yqPcQGDLEfGzcLFmylS19g" org.eventb.core.type="ℙ(BOOL×ℤ)"/>
+</org.eventb.core.scContextFile>

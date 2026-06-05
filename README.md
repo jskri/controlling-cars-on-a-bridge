@@ -1,7 +1,15 @@
 # Controlling cars on a bridge
 
 Models of controlling cars on a one-way bridge between the mainland and an
-island.
+island in:
+
+- Event-B
+
+- TLA+
+
+- Coq / Rocq
+
+- Isabelle
 
 This example is interesting because it solves the problem using a top-down
 approach, introducing a succession of increasingly refined models. Each refined
@@ -19,13 +27,28 @@ semantics are very similar
 
 - [Isabelle](https://isabelle.in.tum.de/) (idem)
 
-For now, the TLA+ and Rocq models go up to the second refinement, while the
-Isabelle models go up to the first.
+The Event-B models feature all the three refinements. For now, the TLA+ and Rocq
+models go up to the second refinement, while the Isabelle models go up to the
+first.
+
+See READMEs in the respective subdirectories.
 
 
 # Requirements
 
 The proofs have been successfully verified with:
+
+## Event-B
+
+- [Rodin 3.9
+  platform](https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/3.9/)
+  with the following plugins (in Rodin, `Help > Install New Software`):
+
+  + Atelier B provers 2.4.1
+
+  + SMT Solvers 1.5.0
+
+  + editing (optional): Camille Text Editor 3.6.0
 
 ## TLA+
 

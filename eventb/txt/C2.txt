@@ -1,0 +1,184 @@
+machine C2
+/***************************************************************************/
+/* Third model of course 02: Controlling cars on a bridge                  */
+/*                                                                         */
+/* Introducing traffic lights.                                             */
+/*                                                                         */
+/* See https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf */
+/*                                                                         */
+/*               IL_in                       ML_out                        */
+/*   ---------   <-----   ----------------   <-----   ----------           */
+/*  | Island  |          | One Way Bridge |          | MainLand |          */
+/*   ---------   ----->   ----------------   ----->   ----------           */
+/*               IL_out                       ML_in                        */
+/*                                                                         */
+/*                               a               ml_tl                     */
+/*   ---------   <---------------------------------   ----------           */
+/*  |    b    |            One Way Bridge            |          |          */
+/*   ---------   --------------------------------->   ----------           */
+/*            il_tl              c                                         */
+/***************************************************************************/
+
+refines C1
+
+sees C2Ctx
+
+variables
+  a       // Number of cars on the bridge going to the island.
+  b       // Number of cars on the island.
+  c       // Number of cars on the bridge going to the mainland.
+  ml_tl   // Mainland's traffic light.
+  il_tl   // Island's traffic light.
+  ml_pass // True if at least one car passed since ml tl turned green.
+  il_pass // True if at least one car passed since il tl turned green.
+
+invariants
+  @i0 ml_tl ∈ COLOR
+  @i1 il_tl ∈ COLOR
+  @i2 ml_pass ∈ BOOL
+  @i3 il_pass ∈ BOOL
+  @i4 ml_tl = green ⇒ a+b < d ∧ c = 0 // Green implies the guard of C1.ML_out
+  @i5 il_tl = green ⇒ b > 0 ∧ a = 0   // Green implies the guard of C1.IL_out.
+  @i6 ml_tl = red ∨ il_tl = red       // At least one traffic light is red.
+  @i7 ml_tl = red ⇒ ml_pass = TRUE
+  @i8 il_tl = red ⇒ il_pass = TRUE
+  // From C0:
+  //   a+b+c ≤ d
+  //   a+b+c > 0 ∨ a+b+c < d
+  // From C1:
+  //   n = a+b+c
+  //   a = 0 ∨ c = 0 // one-way bridge
+  //   (c > 0) ∨ (a+b+c < d ∧ c = 0) ∨ (a > 0) ∨ (a = 0 ∧ b > 0) // deadlock-free
+  theorem @dlf
+      (ml_tl = red ∧ a+b < d ∧ c = 0 ∧ il_pass = TRUE)
+    ∨ (il_tl = red ∧ 0 < b ∧ a = 0 ∧ ml_pass = TRUE)
+    ∨ c > 0
+    ∨ ml_tl = green
+    ∨ a > 0
+    ∨ il_tl = green
+    // Disjunction of all event guards.
+    // Informal proof:
+    // - We know the bridge is one-way (a = 0 ∨ c = 0).
+    // - Suppose no car on the bridge to the island (a = 0).
+    //   - Suppose cars on the island (b > 0).
+    //     - Suppose not last car on the island (b > 1) -> IL_out_1 possible.
+    //     - Suppose last car on the island (b = 1) -> IL_out_2 possible.
+    //   - Suppose no car on the island (b = 0).
+    //     - Suppose cars on bridge to the mainland (c > 0) -> ML_in possible.
+    //     - Suppose no car on bridge to the mainland (c = 0).
+    //       - Suppose more than one car can enter island+bridge (a+b+1 < d) ->
+    //           ML_out_1 possible
+    //       - Suppose this is the last car that can enter island+bridge (a+b+1 = d) ->
+    //           ML_out_2 possible
+    // - Suppose no car on the bridge to the mainland (c = 0).
+    //   - Suppose cars on bridge to island (a > 0) -> IL_in possible
+    //   - Suppose no car on bridge to island (a = 0).
+    //     - Suppose cars on island (b > 0).
+    //       - Suppose more than one car still on the island (b−1 > 0) ->
+    //           IL_out_1 possible
+    //       - Suppose this is the last car on the island (b−1 = 0) ->
+    //           IL_out_2 possible
+    //     - Suppose no car on island (b = 0).
+    //       - Suppose more than one car can enter island+bridge (a+b+1 < d) ->
+    //           ML_out_1 possible
+    //       - Suppose this is the last car that can enter island+bridge (a+b+1 = d) ->
+    //           ML_out_2 possible
+
+variant
+  b2n(ml_pass) + b2n(il_pass)
+
+events
+  event INITIALISATION
+  extends INITIALISATION
+  then
+    @a3 il_tl   ≔ red
+    @a4 ml_tl   ≔ red
+    @a5 ml_pass ≔ TRUE
+    @a6 il_pass ≔ TRUE
+  end
+
+  convergent event ML_tl_green // Mainland's traffic light turns green.
+  where
+    @g0 ml_tl = red
+    @g1 a+b < d
+    @g2 c = 0
+    @g3 il_pass = TRUE
+  then
+    @a0 ml_tl   ≔ green
+    @a1 il_tl   ≔ red
+    @a2 ml_pass ≔ FALSE
+  end
+
+  convergent event IL_tl_green // Island's traffic light turns green.
+  where
+    @g0 il_tl = red
+    @g1 a = 0
+    @g2 b > 0
+    @g3 ml_pass = TRUE
+  then
+    @a0 ml_tl   ≔ red
+    @a1 il_tl   ≔ green
+    @a2 il_pass ≔ FALSE
+  end
+
+  event ML_in // One car on the bridge enters the mainland (idem C1).
+  extends ML_in
+  end
+
+  event ML_out_1 // One car from the mainland enters the bridge.
+                 // The mainland's traffic light stays green.
+  refines ML_out
+  where
+    @g0 ml_tl = green
+    @g1 a+b+1 < d
+  then
+    @a0 a       ≔ a+1
+    @a1 il_tl   ≔ red
+    @a2 ml_pass ≔ TRUE
+  end
+
+  event ML_out_2 // One car from the mainland enters the bridge.
+                 // The mainland's traffic light turns red.
+  refines ML_out
+  where
+    @g0 ml_tl = green
+    @g1 a+b+1 = d
+  then
+    @a0 a       ≔ a+1
+    @a1 il_tl   ≔ red
+    @a2 ml_tl   ≔ red
+    @a3 ml_pass ≔ TRUE
+  end
+
+  event IL_in // // One car on the bridge enters the island (idem C1).
+  extends IL_in
+  end
+
+  event IL_out_1 // One car on the island enters the bridge.
+                 // The island's traffic light stays green.
+  refines IL_out
+  where
+    @g0 il_tl = green
+    @g1 b > 1
+  then
+    @a0 b       ≔ b−1
+    @a1 c       ≔ c+1
+    @a2 ml_tl   ≔ red
+    @a3 il_tl   ≔ green
+    @a4 il_pass ≔ TRUE
+  end
+
+  event IL_out_2 // One car on the island enters the bridge.
+                 // The island's traffic light turns red.
+  refines IL_out
+  where
+    @g0 il_tl = green
+    @g1 b = 1
+  then
+    @a0 b       ≔ b−1
+    @a1 c       ≔ c+1
+    @a2 ml_tl   ≔ red
+    @a3 il_tl   ≔ red
+    @a4 il_pass ≔ TRUE
+  end
+end
