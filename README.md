@@ -16,9 +16,17 @@ approach, introducing a succession of increasingly refined models. Each refined
 model introduces new details, which keeps the modeling task manageable. All
 invariants and refinements are formally proved.
 
-The [original
-models](https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf)
-use the Event-B formalism. We adapt them here to:
+The original models come from the book [Modeling in Event-B: System and Software
+Engineering](https://www.cambridge.org/core/books/modeling-in-eventb/F39FF5F1B60F0AA585718B8E6A4F9DD7)
+from [Jean-Raymond Abrial](https://en.wikipedia.org/wiki/Jean-Raymond_Abrial).
+The book is not freely available but see this [course from the same
+author](https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/112/1/sld.ch2.car.pdf)
+for an equivalent content.
+
+The Event-B models are written in
+[Rodin](https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/3.9/)
+with full proofs (invariants, convergence, deadlock freeness, refinement). They
+are also adapted to:
 
 - [TLA+](https://lamport.azurewebsites.net/tla/tla.html), whose syntax and
 semantics are very similar
@@ -27,9 +35,9 @@ semantics are very similar
 
 - [Isabelle](https://isabelle.in.tum.de/) (idem)
 
-The Event-B models feature all the three refinements. For now, the TLA+ and Rocq
-models go up to the second refinement, while the Isabelle models go up to the
-first. The Event-B models also include interactive visualizations.
+The Event-B models feature all the three refinements from the book. For now, the
+TLA+ and Rocq models go up to the second refinement, while the Isabelle models
+go up to the first. The Event-B models also include interactive visualizations.
 
 See READMEs in the respective subdirectories.
 
