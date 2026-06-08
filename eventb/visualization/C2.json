@@ -1,0 +1,54 @@
+{
+  "svg":"C2.svg",
+  "items":[
+    {
+      "id":         "car_bridge_to_island",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "a",
+      "text": "TO_STRING(a)",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "car_island",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "b",
+      "text": "TO_STRING(b)",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "car_bridge_to_mainland",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "c",
+      "text": "TO_STRING(c)",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "d",
+      "text": "TO_STRING(d)"
+    },
+    {
+      "id":   "ml_tl_red",
+      "visibility": "IF ml_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ml_tl_green",
+      "visibility": "IF ml_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "il_tl_red",
+      "visibility": "IF il_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "il_tl_green",
+      "visibility": "IF il_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    }
+    ],
+  "events": [
+    ]
+}

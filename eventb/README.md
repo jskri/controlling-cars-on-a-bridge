@@ -2,12 +2,14 @@
 
 The model files are stored in an XML format and can be conveniently edited only
 through the Rodin IDE. For the sake of accessibility for newcomers, plain text
-versions are provided, but are not authoritative.
+versions are provided, but are not authoritative. Interactive visualizations of
+the machines are also provided. See corresponding subdirectory.
 
 ```
 .
-├── rodin/ # Rodin project
-└── txt/   # text versions of machines and contexts
+├── rodin/          # Rodin project
+├── txt/            # text versions of machines and contexts
+└── visualization/  # interactive visualizations of machines
 ```
 
 

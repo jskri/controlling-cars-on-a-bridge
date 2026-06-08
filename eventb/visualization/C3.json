@@ -1,0 +1,243 @@
+{
+  "svg":"C3.svg",
+  "items":[
+    {
+      "id":         "ctl_car_bridge_to_island",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_a",
+      "text": "TO_STRING(a)",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "ctl_car_island",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_b",
+      "text": "TO_STRING(b)",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "ctl_car_bridge_to_mainland",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_c",
+      "text": "TO_STRING(c)",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "d",
+      "text": "TO_STRING(d)"
+    },
+
+    {
+      "id":   "ctl_ml_tl_red",
+      "visibility": "IF ml_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_ml_tl_green",
+      "visibility": "IF ml_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_il_tl_red",
+      "visibility": "IF il_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "ctl_il_tl_green",
+      "visibility": "IF il_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    },
+
+    {
+      "id":         "env_car_bridge_to_island",
+      "visibility": "IF A>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_a",
+      "text": "TO_STRING(A)",
+      "visibility": "IF A>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "env_car_island",
+      "visibility": "IF B>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_b",
+      "text": "TO_STRING(B)",
+      "visibility": "IF B>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "env_car_bridge_to_mainland",
+      "visibility": "IF C>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_c",
+      "text": "TO_STRING(C)",
+      "visibility": "IF C>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+
+    {
+      "id":   "env_ml_tl_red",
+      "visibility": "IF ml_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_ml_tl_green",
+      "visibility": "IF ml_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_il_tl_red",
+      "visibility": "IF il_tl = red THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "env_il_tl_green",
+      "visibility": "IF il_tl = green THEN \"visible\" ELSE \"hidden\" END"
+    },
+
+    {
+      "id":   "IL_OUT_SR",
+      "style": "IF IL_OUT_SR = on THEN \"fill:#ff0;stroke:#000000;stroke-width:0.465\" ELSE \"fill:#666;stroke:#000000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "IL_IN_SR",
+      "style": "IF IL_IN_SR = on THEN \"fill:#ff0;stroke:#000000;stroke-width:0.465\" ELSE \"fill:#666;stroke:#000000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ML_OUT_SR",
+      "style": "IF ML_OUT_SR = on THEN \"fill:#ff0;stroke:#000000;stroke-width:0.465\" ELSE \"fill:#666;stroke:#000000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ML_IN_SR",
+      "style": "IF ML_IN_SR = on THEN \"fill:#ff0;stroke:#000000;stroke-width:0.465\" ELSE \"fill:#666;stroke:#000000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "ml_in_10_arr1",
+      "style": "IF ml_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_in_10_arr2",
+      "style": "IF ml_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_in_10_arr3",
+      "style": "IF ml_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_in_10_arr4",
+      "style": "IF ml_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_in_10_arr5",
+      "style": "IF ml_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "ml_out_10_arr1",
+      "style": "IF ml_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_out_10_arr2",
+      "style": "IF ml_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_out_10_arr3",
+      "style": "IF ml_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_out_10_arr4",
+      "style": "IF ml_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_out_10_arr5",
+      "style": "IF ml_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "il_in_10_arr1",
+      "style": "IF il_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_in_10_arr2",
+      "style": "IF il_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_in_10_arr3",
+      "style": "IF il_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_in_10_arr4",
+      "style": "IF il_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_in_10_arr5",
+      "style": "IF il_in_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "il_out_10_arr1",
+      "style": "IF il_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_out_10_arr2",
+      "style": "IF il_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_out_10_arr3",
+      "style": "IF il_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_out_10_arr4",
+      "style": "IF il_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_out_10_arr5",
+      "style": "IF il_out_10 = TRUE THEN \"stroke:#ff0;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "il_tl_arr1",
+      "style": "IF il_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_tl_arr2",
+      "style": "IF il_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_tl_arr3",
+      "style": "IF il_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_tl_arr4",
+      "style": "IF il_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "il_tl_arr5",
+      "style": "IF il_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+
+    {
+      "id":   "ml_tl_arr1",
+      "style": "IF ml_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_tl_arr2",
+      "style": "IF ml_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_tl_arr3",
+      "style": "IF ml_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_tl_arr4",
+      "style": "IF ml_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    },
+    {
+      "id":   "ml_tl_arr5",
+      "style": "IF ml_tl = green THEN \"stroke:#0d2;stroke-width:0.465\" ELSE \"stroke:#000;stroke-width:0.465\" END"
+    }
+    ],
+  "events": [
+    ]
+}

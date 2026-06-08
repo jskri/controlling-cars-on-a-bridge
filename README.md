@@ -29,7 +29,7 @@ semantics are very similar
 
 The Event-B models feature all the three refinements. For now, the TLA+ and Rocq
 models go up to the second refinement, while the Isabelle models go up to the
-first.
+first. The Event-B models also include interactive visualizations.
 
 See READMEs in the respective subdirectories.
 

@@ -1,0 +1,70 @@
+{
+  "svg":"C1.svg",
+  "items":[
+    {
+      "id":         "car_bridge_to_island",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "a",
+      "text": "TO_STRING(a)",
+      "visibility": "IF a>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "car_island",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "b",
+      "text": "TO_STRING(b)",
+      "visibility": "IF b>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":         "car_bridge_to_mainland",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "c",
+      "text": "TO_STRING(c)",
+      "visibility": "IF c>0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id":   "d",
+      "text": "TO_STRING(d)"
+    },
+    {
+      "id": "ML_in_button",
+      "visibility": "IF c > 0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id": "ML_out_button",
+      "visibility": "IF a + b < d & c = 0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id": "IL_in_button",
+      "visibility": "IF a > 0 THEN \"visible\" ELSE \"hidden\" END"
+    },
+    {
+      "id": "IL_out_button",
+      "visibility": "IF b > 0 & a = 0 THEN \"visible\" ELSE \"hidden\" END"
+    }
+    ],
+  "events":[
+    {
+      "id": "ML_in_button",
+      "event": "ML_in"
+    },
+    {
+      "id": "ML_out_button",
+      "event": "ML_out"
+    },
+    {
+      "id": "IL_in_button",
+      "event": "IL_in"
+    },
+    {
+      "id": "IL_out_button",
+      "event": "IL_out"
+    }
+    ]
+}
